@@ -12,7 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let testImageView = ImageView(frame: view.bounds)
+        view.addSubview(testImageView)
+        testImageView.image = UIImage(named: "1")
     }
 
     override func didReceiveMemoryWarning() {
