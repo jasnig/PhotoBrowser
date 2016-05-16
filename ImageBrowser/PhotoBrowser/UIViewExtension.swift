@@ -1,11 +1,11 @@
 //
-//  TViewController.swift
+//  UIViewExtensionFrame.swift
 //  ImageBrowser
 //
-//  Created by jasnig on 16/5/5.
+//  Created by jasnig on 16/5/15.
 //  Copyright © 2016年 ZeroJ. All rights reserved.
 // github: https://github.com/jasnig
-// 简书: http://www.jianshu.com/users/fb31a3d1ec30/latest_articles
+// 简书: http://www.jianshu.com/p/b84f4dd96d0c
 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,40 +26,68 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//
-
 import UIKit
-
-class TViewController: UIViewController {
-    lazy var imageView: UIImageView = {[unowned self] in
-        let imageView = UIImageView(frame: self.view.bounds)
-        imageView.contentMode = .ScaleAspectFit
+//MARK: - frame extension
+extension UIView {
+    /// x
+    var zj_x: CGFloat {
+        set(x) {
+            frame.origin.x = x
+        }
         
-        imageView.backgroundColor = UIColor.redColor()
-        return imageView
-    }()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imageView.kf_setImageWithURL(NSURL(string: "http://pic.4j4j.cn/upload/pic/20130531/70940e0b23.jpg")!)
-
-        view.addSubview(imageView)
-        // Do any additional setup after loading the view.
+        get {
+            return frame.origin.x
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    /// y
+    var zj_y:CGFloat {
+        set(y) {
+            frame.origin.y = y
+        }
+        
+        get {
+            return frame.origin.y
+        }
+    }
+    /// centerX
+    var zj_centerX: CGFloat {
+        set(centerX) {
+            center.x = centerX
+        }
+        
+        get {
+            return center.x
+        }
+    }
+    /// centerY
+    var zj_centerY: CGFloat {
+        set(centerY) {
+            center.y = centerY
+        }
+        
+        get {
+            return center.y
+        }
+    }
+    /// width
+    var zj_width: CGFloat {
+        set(width) {
+            frame.size.width = width
+        }
+        
+        get {
+            return bounds.size.width
+        }
+    }
+    /// height
+    var zj_height: CGFloat {
+        set(height) {
+            frame.size.height = height
+        }
+        
+        get {
+            return bounds.size.height
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

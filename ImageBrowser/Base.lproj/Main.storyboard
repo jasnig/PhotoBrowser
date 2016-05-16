@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qKs-4C-iVV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qKs-4C-iVV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--选择类型-->
+        <scene sceneID="26z-cE-1tG">
+            <objects>
+                <viewController id="0lc-Oj-Z0r" customClass="ViewController" customModule="ImageBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WCX-fc-zHm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dmj-eU-qfw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="InV-qn-fBg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-g1-7rn">
+                                <rect key="frame" x="0.0" y="79" width="600" height="44"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Sgf-SQ-mnB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="本地图片">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="DzU-F7-fec"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izf-qc-2Wq">
+                                <rect key="frame" x="0.0" y="124" width="600" height="44"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bUp-ar-ajE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="(网络图片)不使用代理示例">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2ve-cs-8SA" kind="show" id="N2O-UZ-wSq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mg6-xx-FNZ">
+                                <rect key="frame" x="0.0" y="169" width="600" height="44"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="oeH-Su-rL4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="(网络图片)使用代理示例">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="l1l-aK-rvT" kind="show" id="KQx-Qu-6X0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Izf-qc-2Wq" firstAttribute="leading" secondItem="edQ-g1-7rn" secondAttribute="leading" id="1tV-XG-ae4"/>
+                            <constraint firstItem="edQ-g1-7rn" firstAttribute="leading" secondItem="InV-qn-fBg" secondAttribute="leading" id="MoX-Uo-tD1"/>
+                            <constraint firstItem="Mg6-xx-FNZ" firstAttribute="top" secondItem="Izf-qc-2Wq" secondAttribute="bottom" constant="1" id="Yfa-QB-Knd"/>
+                            <constraint firstItem="Mg6-xx-FNZ" firstAttribute="trailing" secondItem="edQ-g1-7rn" secondAttribute="trailing" id="ZsA-tW-tTU"/>
+                            <constraint firstItem="Izf-qc-2Wq" firstAttribute="trailing" secondItem="edQ-g1-7rn" secondAttribute="trailing" id="bcI-r9-Bs1"/>
+                            <constraint firstItem="Izf-qc-2Wq" firstAttribute="top" secondItem="edQ-g1-7rn" secondAttribute="bottom" constant="1" id="hyj-0P-BGe"/>
+                            <constraint firstItem="Mg6-xx-FNZ" firstAttribute="leading" secondItem="edQ-g1-7rn" secondAttribute="leading" id="vdJ-gV-e9V"/>
+                            <constraint firstItem="edQ-g1-7rn" firstAttribute="top" secondItem="WCX-fc-zHm" secondAttribute="bottom" constant="15" id="vge-3E-D3w"/>
+                            <constraint firstAttribute="trailing" secondItem="edQ-g1-7rn" secondAttribute="trailing" id="wkH-eW-MpT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择类型" id="q2B-Yt-nFB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cuo-5g-mPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="878" y="-85"/>
+        </scene>
+        <!--本地图片-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LocalController" customModule="ImageBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,80 +93,13 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnE-Jg-VwF">
-                                <rect key="frame" x="25" y="79" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="btnOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZs-Hg-B3m"/>
-                                </connections>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aB5-q6-VdP">
-                                <rect key="frame" x="14" y="137" width="568" height="31"/>
-                                <connections>
-                                    <action selector="slider:" destination="BYZ-38-t0r" eventType="valueChanged" id="IWz-d5-WdJ"/>
-                                </connections>
-                            </slider>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-2q-OBu">
-                                <rect key="frame" x="0.0" y="167" width="600" height="433"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cZU-vS-2QC">
-                                    <size key="itemSize" width="160" height="154"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TestCell" id="FCw-Pm-Nnu" customClass="TestCell" customModule="ImageBrowser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="154"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="154"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-sC-evo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="144" height="110"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="1EM-sC-evo" secondAttribute="trailing" id="AOC-vP-ldd"/>
-                                            <constraint firstItem="1EM-sC-evo" firstAttribute="leading" secondItem="FCw-Pm-Nnu" secondAttribute="leading" id="EGq-KO-QL8"/>
-                                            <constraint firstAttribute="bottom" secondItem="1EM-sC-evo" secondAttribute="bottom" id="R3m-T9-iee"/>
-                                            <constraint firstItem="1EM-sC-evo" firstAttribute="top" secondItem="FCw-Pm-Nnu" secondAttribute="top" id="YmG-M7-t6F"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="imageView" destination="1EM-sC-evo" id="fD5-s5-b09"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="vuq-Gc-HCo"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PdP-I9-9fK"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8YI-2q-OBu" firstAttribute="top" secondItem="aB5-q6-VdP" secondAttribute="bottom" id="J7T-fF-Wl8"/>
-                            <constraint firstItem="ZnE-Jg-VwF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="KiX-ZT-NWy"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8YI-2q-OBu" secondAttribute="bottom" id="ZbT-fX-fqQ"/>
-                            <constraint firstAttribute="trailing" secondItem="aB5-q6-VdP" secondAttribute="trailing" constant="20" id="bgT-tT-U3n"/>
-                            <constraint firstAttribute="trailing" secondItem="8YI-2q-OBu" secondAttribute="trailing" id="ci4-1a-JzC"/>
-                            <constraint firstItem="8YI-2q-OBu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="l4X-03-47x"/>
-                            <constraint firstItem="ZnE-Jg-VwF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="m0e-lR-vT0"/>
-                            <constraint firstItem="aB5-q6-VdP" firstAttribute="top" secondItem="ZnE-Jg-VwF" secondAttribute="bottom" constant="28" id="zV5-Zg-FMH"/>
-                            <constraint firstItem="aB5-q6-VdP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="zwR-M2-FMg"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4ww-So-7rJ"/>
-                    <connections>
-                        <outlet property="collectionView" destination="8YI-2q-OBu" id="ydk-SL-i0T"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="本地图片" id="4ww-So-7rJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="312"/>
+            <point key="canvasLocation" x="1658" y="-850"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3ep-VR-fkb">
@@ -103,12 +112,50 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fzE-wr-FPr"/>
+                        <segue destination="0lc-Oj-Z0r" kind="relationship" relationship="rootViewController" id="u30-Rp-WdH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kV8-5z-lFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="291" y="-380"/>
+        </scene>
+        <!--网络图片(使用代理)-->
+        <scene sceneID="IY0-Jw-8eT">
+            <objects>
+                <viewController id="l1l-aK-rvT" customClass="NetworkWithDelegateController" customModule="ImageBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gel-9u-9Ey"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tgx-9W-ugh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XDG-C3-7OV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="网络图片(使用代理)" id="Wv5-ZB-u54"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Oo-se-zsO" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1658" y="497"/>
+        </scene>
+        <!--网络图片(未使用代理)-->
+        <scene sceneID="rkV-hF-JYA">
+            <objects>
+                <viewController id="2ve-cs-8SA" customClass="NetworkWithoutDelegateController" customModule="ImageBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wYo-7R-WMV"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZHb-PM-JOV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gbF-yc-QB7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="网络图片(未使用代理)" id="J9V-AA-0xx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dz4-S2-w5r" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1667" y="-174"/>
         </scene>
     </scenes>
 </document>
