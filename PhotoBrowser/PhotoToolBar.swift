@@ -64,8 +64,8 @@ class PhotoToolBar: UIView {
         
        let saveBtn = UIButton()
         saveBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        saveBtn.backgroundColor = UIColor.blueColor()
-//        saveBtn.setImage(UIImage(named: ""), forState: .Normal)
+        saveBtn.backgroundColor = UIColor.clearColor()
+        saveBtn.setImage(UIImage(named: "feed_video_icon_download_white"), forState: .Normal)
         saveBtn.addTarget(self, action: #selector(self.saveBtnOnClick(_:)), forControlEvents: .TouchUpInside)
         
 //        saveBtn.hidden = self.toolBarStyle.showSaveBtn
@@ -75,8 +75,8 @@ class PhotoToolBar: UIView {
     private lazy var extraBtn: UIButton = {
         let extraBtn = UIButton()
         extraBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        extraBtn.backgroundColor = UIColor.blueColor()
-//        extraBtn.setImage(UIImage(named: ""), forState: .Normal)
+        extraBtn.backgroundColor = UIColor.clearColor()
+        extraBtn.setImage(UIImage(named: "more"), forState: .Normal)
         extraBtn.addTarget(self, action: #selector(self.extraBtnOnClick(_:)), forControlEvents: .TouchUpInside)
 //        extraBtn.hidden = self.toolBarStyle.showExtraBtn
 
@@ -120,7 +120,7 @@ class PhotoToolBar: UIView {
         super.layoutSubviews()
         
         let saveBtnX: CGFloat = 30.0
-        let saveBtnW: CGFloat = 50.0
+        let saveBtnW: CGFloat = 60.0
         let toolBarH: CGFloat = bounds.size.height
 
         saveBtn.frame = CGRect(x: saveBtnX, y: 0.0, width: saveBtnW, height: toolBarH)

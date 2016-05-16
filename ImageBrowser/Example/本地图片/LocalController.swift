@@ -53,8 +53,6 @@ class LocalController: UIViewController {
         
         return collectionView
     }()
-    var photoModels: [PhotoModel] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -110,8 +108,8 @@ extension LocalController: UICollectionViewDelegate, UICollectionViewDataSource 
         }
         
         
-        let testVc = PhotoBrowser(photoModels: setPhoto())
-        testVc.showWithBeginPage(indexPath.row)
+        let photoBrowser = PhotoBrowser(photoModels: setPhoto())
+        photoBrowser.showWithBeginPage(indexPath.row)
     }
     
 }

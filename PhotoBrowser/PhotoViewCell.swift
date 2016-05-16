@@ -71,19 +71,12 @@ class PhotoViewCell: UICollectionViewCell {
         
         imageView.backgroundColor = UIColor.blackColor()
         return imageView
-        }()
-    
-    /// 进度显示
-    private lazy var hud: SimpleHUD? = {[unowned self] in
-        
-        let hud = SimpleHUD(frame:CGRect(x: 0.0, y: (self.zj_height - 80)*0.5, width: self.zj_width, height: 80.0))
-        return hud
-        }()
+    }()
     /// 懒加载
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: self.contentView.zj_width - PhotoBrowser.contentMargin, height: self.contentView.zj_height))
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = true
         //        pagingEnabled = false
         // 预设定
         scrollView.maximumZoomScale = 2.0
@@ -92,6 +85,13 @@ class PhotoViewCell: UICollectionViewCell {
         scrollView.delegate = self
         return scrollView
     }()
+    /// 进度显示
+    private lazy var hud: SimpleHUD? = {[unowned self] in
+        
+        let hud = SimpleHUD(frame:CGRect(x: 0.0, y: (self.zj_height - 80)*0.5, width: self.zj_width, height: 80.0))
+        return hud
+    }()
+
     /// 设置图片
     var image: UIImage? = nil {
         didSet {
@@ -254,6 +254,9 @@ extension PhotoViewCell {
     
     private func setupImageViewFrame() {
         if let imageV = image {
+            // 设置为最小倍数
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
+            
             imageView.image = image
             // 按照图片比例设置imageView的frame
             let width = imageV.size.width < scrollView.zj_width ? imageV.size.width : scrollView.zj_width

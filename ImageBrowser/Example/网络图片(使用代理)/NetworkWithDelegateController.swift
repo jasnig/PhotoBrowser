@@ -114,10 +114,10 @@ extension NetworkWithDelegateController: UICollectionViewDelegate, UICollectionV
             return photos
         }
         
-        let testVc = PhotoBrowser(photoModels: setPhoto())
+        let photoBrowser = PhotoBrowser(photoModels: setPhoto())
         // 指定代理
-        testVc.delegate = self
-        testVc.showWithBeginPage(indexPath.row)
+        photoBrowser.delegate = self
+        photoBrowser.showWithBeginPage(indexPath.row)
     }
 }
 

@@ -111,8 +111,8 @@ extension NetworkWithoutDelegateController: UICollectionViewDelegate, UICollecti
             return photos
         }
         
-        let testVc = PhotoBrowser(photoModels: setPhoto())
-        testVc.showWithBeginPage(indexPath.row)
+        let photoBrowser = PhotoBrowser(photoModels: setPhoto())
+        photoBrowser.showWithBeginPage(indexPath.row)
     }
     
 }
