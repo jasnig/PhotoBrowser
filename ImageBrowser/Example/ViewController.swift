@@ -10,11 +10,13 @@ import UIKit
 import Kingfisher
 
 class TestCell: UICollectionViewCell {
-    lazy var imageView: UIImageView = UIImageView(frame: self.bounds)
+    lazy var imageView: AnimatedImageView = AnimatedImageView(frame: self.bounds)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         imageView.contentMode = .ScaleToFill
+        
+        imageView.autoPlayAnimatedImage = false
         addSubview(imageView)
     }
     

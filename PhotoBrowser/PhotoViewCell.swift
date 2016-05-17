@@ -65,8 +65,8 @@ class PhotoViewCell: UICollectionViewCell {
     
     private var downloadTask: RetrieveImageTask?
     /// 懒加载 对外可读
-    private(set) lazy var imageView: UIImageView = {[unowned self] in
-        let imageView = UIImageView()
+    private(set) lazy var imageView: AnimatedImageView = {[unowned self] in
+        let imageView = AnimatedImageView()
         imageView.contentMode = .ScaleAspectFit
         
         imageView.backgroundColor = UIColor.blackColor()
