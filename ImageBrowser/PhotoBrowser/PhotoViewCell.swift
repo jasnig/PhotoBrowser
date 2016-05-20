@@ -30,22 +30,22 @@
 import UIKit
 import Kingfisher
 
-class PhotoModel {
-    var description: String?
+public class PhotoModel {
+    public var description: String?
     // 网络图片的URL
-    var imageUrlString: String?
+    public var imageUrlString: String?
     // 本地图片 或者已经下载好的图片
-    var localImage: UIImage?
+    public var localImage: UIImage?
     // 用来设置默认图片 和执行动画 如果没有提供,将没有加载时的默认图片, 并且没有动画
-    var sourceImageView: UIImageView?
+    public var sourceImageView: UIImageView?
     // 本地图片
-    init(localImage: UIImage?, sourceImageView: UIImageView?, description: String?) {
+    public init(localImage: UIImage?, sourceImageView: UIImageView?, description: String?) {
         self.localImage = localImage
         self.sourceImageView = sourceImageView
         self.description = description
     }
     // 网络图片
-    init(imageUrlString: String?, sourceImageView: UIImageView?, description: String?) {
+    public init(imageUrlString: String?, sourceImageView: UIImageView?, description: String?) {
         self.imageUrlString = imageUrlString
         self.sourceImageView = sourceImageView
         self.description = description

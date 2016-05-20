@@ -30,7 +30,7 @@ import UIKit
 //MARK: - frame extension
 extension UIView {
     /// x
-    var zj_x: CGFloat {
+    public final var zj_x: CGFloat {
         set(x) {
             frame.origin.x = x
         }
@@ -40,7 +40,7 @@ extension UIView {
         }
     }
     /// y
-    var zj_y:CGFloat {
+    public final var zj_y:CGFloat {
         set(y) {
             frame.origin.y = y
         }
@@ -50,7 +50,7 @@ extension UIView {
         }
     }
     /// centerX
-    var zj_centerX: CGFloat {
+    public final var zj_centerX: CGFloat {
         set(centerX) {
             center.x = centerX
         }
@@ -60,7 +60,7 @@ extension UIView {
         }
     }
     /// centerY
-    var zj_centerY: CGFloat {
+    public final var zj_centerY: CGFloat {
         set(centerY) {
             center.y = centerY
         }
@@ -70,7 +70,7 @@ extension UIView {
         }
     }
     /// width
-    var zj_width: CGFloat {
+    public final var zj_width: CGFloat {
         set(width) {
             frame.size.width = width
         }
@@ -80,7 +80,7 @@ extension UIView {
         }
     }
     /// height
-    var zj_height: CGFloat {
+    public final var zj_height: CGFloat {
         set(height) {
             frame.size.height = height
         }

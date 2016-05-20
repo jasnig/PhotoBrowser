@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "8.0"
   s.source   = { :git => "https://github.com/jasnig/PhotoBrowser.git", :tag => s.version }
-  s.framework  = "UIKit", "Kingfisher"
+  s.framework  = "UIKit"
+  s.dependency 'Kingfisher'
   s.source_files = "ImageBrowser/PhotoBrowser/*.swift"
 end

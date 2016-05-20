@@ -35,7 +35,7 @@
 
 import UIKit
 
-protocol PhotoBrowserDelegate: NSObjectProtocol {
+public protocol PhotoBrowserDelegate: NSObjectProtocol {
     // 更新当前的sourceImageView
     func sourceImageViewForCurrentIndex(index: Int) -> UIImageView?
     ///  正在显示第几页
@@ -50,16 +50,16 @@ protocol PhotoBrowserDelegate: NSObjectProtocol {
 // 协议扩展, 实现oc协议的optional效果, 当然可以直接在协议前 加上@objc
 extension PhotoBrowserDelegate {
     // 更新当前的sourceImageView
-    func sourceImageViewForCurrentIndex(index: Int) -> UIImageView? {
+    public func sourceImageViewForCurrentIndex(index: Int) -> UIImageView? {
         return nil
     }
     ///  正在显示第几页
-    func photoBrowserDidDisplayPage(currentPage: Int, totalPages: Int) { }
+    public func photoBrowserDidDisplayPage(currentPage: Int, totalPages: Int) { }
     //  将要展示图片, 进入浏览模式, 可以用来进行个性化的设置, 比如在这个时候, 隐藏状态栏 和原来的图片
-    func photoBrowerWillDisplay(beginPage: Int) { }
+    public func photoBrowerWillDisplay(beginPage: Int) { }
     // 结束展示图片, 将要退出浏览模式,销毁photoBrowser, 可以用来进行个性化的设置 比如显示状态栏, 显示原来的图片
-    func photoBrowserWillEndDisplay(endPage: Int) { }
-    func photoBrowserDidEndDisplay(endPage: Int) { }
+    public func photoBrowserWillEndDisplay(endPage: Int) { }
+    public func photoBrowserDidEndDisplay(endPage: Int) { }
     
     
 }
@@ -67,15 +67,15 @@ extension PhotoBrowserDelegate {
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension PhotoBrowser: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    public final func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public final func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoModels.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public final func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowser.cellID, forIndexPath: indexPath) as! PhotoViewCell
         // 避免出现重用出错的问题
         cell.resetUI()
@@ -93,7 +93,7 @@ extension PhotoBrowser: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public final func scrollViewDidScroll(scrollView: UIScrollView) {
         // 向下取整
         currentIndex = Int(scrollView.contentOffset.x / scrollView.zj_width + 0.5)
 
@@ -102,7 +102,7 @@ extension PhotoBrowser: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 
-class PhotoBrowser: UIView {
+public class PhotoBrowser: UIView {
     /// 每一页之间的间隔
     static let contentMargin: CGFloat = 20.0
     /// cell重用id
@@ -143,7 +143,7 @@ class PhotoBrowser: UIView {
 
     }
     
-    weak var delegate: PhotoBrowserDelegate?
+    public weak var delegate: PhotoBrowserDelegate?
     
     private lazy var collectionView: UICollectionView = {[unowned self] in
         let flowLayout = UICollectionViewFlowLayout()
@@ -181,7 +181,7 @@ class PhotoBrowser: UIView {
     ///
     ///  - parameter currentIndex: 指定的页数
     ///  - parameter animated:     是否执行动画滚动到指定的页
-    func currentIndex(currentIndex: Int, animated: Bool) {
+    public func currentIndex(currentIndex: Int, animated: Bool) {
         assert(currentIndex >= 0 && currentIndex < photoModels.count, "设置的下标有误")
         if currentIndex < 0 || currentIndex >= photoModels.count { return }
         // 更新当前下标
@@ -204,14 +204,14 @@ class PhotoBrowser: UIView {
         setupToolBarIndexText(currentIndex)
     }
     
-    init(photoModels: [PhotoModel]) {
+    public init(photoModels: [PhotoModel]) {
         self.photoModels = photoModels
         let frame = UIApplication.sharedApplication().keyWindow!.bounds
         super.init(frame: frame)
         commonSet()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -225,12 +225,12 @@ class PhotoBrowser: UIView {
 // MARK: - toolBar
 extension PhotoBrowser {
     
-    func setupToolBarIndexText(index: Int) {
+    private func setupToolBarIndexText(index: Int) {
         toolBar.indexText = "\(index + 1)/\(photoModels.count)"
 
     }
     
-    func setupToolBarAction() {
+    private func setupToolBarAction() {
         
         toolBar.saveBtnOnClick = {[unowned self] (saveBtn: UIButton) in
             // 保存到相册
@@ -270,7 +270,7 @@ extension PhotoBrowser {
 extension PhotoBrowser {
     
     
-    func animateZoomIn() {
+    private func animateZoomIn() {
         
         let currentModel = photoModels[currentIndex]
         let sourceImageView = getCurrentSourceImageView(currentIndex)
@@ -320,7 +320,7 @@ extension PhotoBrowser {
         }
     }
     
-    func animateZoomOut() {
+    private func animateZoomOut() {
         
         self.alpha = 0.0
         
@@ -369,7 +369,7 @@ extension PhotoBrowser {
 //        }
     }
     
-    func snapView(view: UIView) -> UIView {
+    private func snapView(view: UIView) -> UIView {
         
         UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
@@ -382,7 +382,7 @@ extension PhotoBrowser {
     
     }
     
-    func showWithBeginPage(beginPage: Int) {
+    public func showWithBeginPage(beginPage: Int) {
         //设置当前
         currentIndex(beginPage, animated: false)
         
@@ -394,7 +394,7 @@ extension PhotoBrowser {
     }
     
     
-    func dismiss() {
+    private func dismiss() {
         animateZoomOut()
     }
 }
