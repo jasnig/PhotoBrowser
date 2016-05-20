@@ -194,7 +194,10 @@ extension PhotoViewCell {
             return
         }
         
-        // 加载本地图片
+        // 如果是加载本地的图片, 直接设置图片即可, 注意这里是photoBrowser需要提升的地方
+        // 因为对于本地图片的加载没有做处理, 所以当直接使用 UIImage(named"")的形式加载图片的时候, 会消耗大量的内存
+        // 不过鉴于参考了其他的图片浏览器框架, 大家对本地图片都没有处理, 因为这个确实用的很少, 毕竟都是用来加载网络图片的情况比较多
+        // 如果发现确实需要处理后面会努力处理这个问题
         if photo.localImage != nil {
             image = photo.localImage
             return
