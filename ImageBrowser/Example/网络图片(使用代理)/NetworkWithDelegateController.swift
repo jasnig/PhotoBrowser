@@ -165,4 +165,5 @@ extension NetworkWithDelegateController: PhotoBrowserDelegate {
         let sourceView = cell?.imageView
         return sourceView
     }
+    
 }

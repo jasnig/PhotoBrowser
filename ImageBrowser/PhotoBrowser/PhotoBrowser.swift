@@ -36,18 +36,20 @@
 import UIKit
 
 public protocol PhotoBrowserDelegate: NSObjectProtocol {
-    // 更新当前的sourceImageView
+    /// 更新当前的sourceImageView(update the currentSourceImageView)
     func sourceImageViewForCurrentIndex(index: Int) -> UIImageView?
-    ///  正在显示第几页
+    ///  正在显示第几页(the current displaying page)
     func photoBrowserDidDisplayPage(currentPage: Int, totalPages: Int)
-    //  将要展示图片, 进入浏览模式, 可以用来进行个性化的设置, 比如在这个时候, 隐藏状态栏 和原来的图片
+    ///  将要展示图片, 进入浏览模式, 可以用来进行个性化的设置, 比如在这个时候, 隐藏状态栏 和原来的图片 (photoBrowser is preparing well and will begin display the first page )
     func photoBrowerWillDisplay(beginPage: Int)
-    // 结束展示图片, 将要退出浏览模式,销毁photoBrowser, 可以用来进行个性化的设置 比如显示状态栏, 显示原来的图片
+    /// 结束展示图片, 将要退出浏览模式,销毁photoBrowser, 可以用来进行个性化的设置 比如显示状态栏, 显示原来的图片(photoBrowser will be dismissed)
     func photoBrowserWillEndDisplay(endPage: Int)
+    ///  photoBrowser is now dismissed
     func photoBrowserDidEndDisplay(endPage: Int)
 }
 
 // 协议扩展, 实现oc协议的optional效果, 当然可以直接在协议前 加上@objc
+// just to reach the effect provided by the objective-c's 'optional',but you can also use "@objc"
 extension PhotoBrowserDelegate {
     // 更新当前的sourceImageView
     public func sourceImageViewForCurrentIndex(index: Int) -> UIImageView? {
@@ -77,10 +79,11 @@ extension PhotoBrowser: UICollectionViewDelegate, UICollectionViewDataSource {
     
     public final func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowser.cellID, forIndexPath: indexPath) as! PhotoViewCell
-        // 避免出现重用出错的问题
+        // 避免出现重用出错的问题(to avoid reusing mistakes)
         cell.resetUI()
         let currentModel = photoModels[indexPath.row]
         // 可能在代理方法中重新设置了sourceImageView,所以需要更新当前的sourceImageView
+        // maybe we update the sourceImageView through the delegare, so we need to reset the currentModel.sourceImageView
         currentModel.sourceImageView = getCurrentSourceImageView(indexPath.row)
         cell.photoModel = currentModel
         

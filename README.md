@@ -14,6 +14,7 @@
 
 ### 可以简单快速灵活的实现上图中的效果
 ### 注意, 代码依赖 Kingfisher, 请先在您的项目中添加Kingfisher框架
+### attention please PhotoBrowser relys on 'Kingfisher'
 
 ---
 
@@ -29,11 +30,22 @@
 
 ## Installation
 
-###直接下载将下载文件的PhotoBrowser文件夹下的文件拖进您的项目中就可以使用了
+* CocoaPods
+add these lines to your project's file 'Podfile'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'ZJPhotoBrowser', '~> 0.0.6'
+
+* 直接下载将下载文件的PhotoBrowser文件夹下的文件拖进您的项目中就可以使用了
+*  or drag the downloaded file 'PhotoBrowser' to your project
 
 ###Usage
 ---
-一. 本地图片使用示例
+一. 本地图片使用示例(load local images' example)
 
 	    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         1. 设置photoModels
@@ -58,7 +70,7 @@
 
 ----
 
-二. 网络图片使用
+二. 网络图片使用(load network images' example)
 
 	    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         1. 设置photoModels
@@ -84,7 +96,7 @@
     
  ---
  
- 三. 使用代理,动态更新sourceImageView和进行更多的操作
+ 三. 使用代理,动态更新sourceImageView和进行更多的操作(using delegate to do more useful work)
  
  	    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         1. 设置photoModels
@@ -107,7 +119,7 @@
     }   
     
     
-代理使用示例
+代理使用示例(the delegate's method use example)
 ---
     // 正在展示的页
     // 因为通过 collectionView.cellForItemAtIndexPath(currentIndexPath)
