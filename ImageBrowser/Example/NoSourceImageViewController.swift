@@ -1,8 +1,8 @@
 //
-//  LocalController.swift
+//  NoSourceImageViewController.swift
 //  ImageBrowser
 //
-//  Created by jasnig on 16/5/16.
+//  Created by jasnig on 16/5/25.
 //  Copyright © 2016年 ZeroJ. All rights reserved.
 // github: https://github.com/jasnig
 // 简书: http://www.jianshu.com/users/fb31a3d1ec30/latest_articles
@@ -30,9 +30,7 @@
 
 import UIKit
 
-class LocalController: UIViewController {
-    static let margin: CGFloat = 10.0
-    
+class NoSourceImageViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {[unowned self] in
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .Vertical
@@ -52,42 +50,54 @@ class LocalController: UIViewController {
         collectionView.registerClass(TestCell.self, forCellWithReuseIdentifier: String(TestCell))
         
         return collectionView
-    }()
+        }()
+    let photosURLString: [String] = [
+        "http://a.33iq.com/upload/15/08/12/images/14393706299128.jpg",
+        "http://pic1a.nipic.com/2008-09-19/200891903253318_2.jpg",
+        "http://online.sccnn.com/desk2/1314/1920car_35003.jpg",
+        "http://img1qn.moko.cc/2016-04-21/a37f9d54-493f-4352-8b40-f17cb8570e67.jpg",
+        "http://image.tianjimedia.com/uploadImages/2015/204/14/736OGPLY9H62_1000x600.jpg",
+        "http://a.hiphotos.baidu.com/image/pic/item/f9dcd100baa1cd11daf25f19bc12c8fcc3ce2d46.jpg",
+        "http://image.tianjimedia.com/uploadImages/2013/134/001GKNRJ7FCO_1440x900.jpg",
+        "http://pic4.nipic.com/20091215/2396136_140959028451_2.jpg",
+        "http://www.05927.com/UploadFiles/pic_200910271459213674.jpg",
+        "http://a.hiphotos.baidu.com/image/pic/item/43a7d933c895d1438d0b16fc77f082025baf07eb.jpg",
+        "http://c.hiphotos.baidu.com/image/pic/item/8b13632762d0f703f3b967030cfa513d2797c5e2.jpg",
+        "http://f.hiphotos.baidu.com/image/pic/item/91529822720e0cf3a2cdbc240e46f21fbe09aa33.jpg",
+        "http://pic.58pic.com/58pic/11/52/20/45s58PICVat.jpg"
+        
+        
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(collectionView)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    var images: [UIImage] = [
-        UIImage(named: "1")!,
-        UIImage(named: "2")!,
-        UIImage(named: "3")!,
-        UIImage(named: "1")!,
-        UIImage(named: "2")!,
-        UIImage(named: "3")!
-    ]
 }
 
+
+
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
-extension LocalController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension NoSourceImageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return photosURLString.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(String(TestCell), forIndexPath: indexPath) as! TestCell
-        cell.imageView.image = images[indexPath.row]
+        let photoUrlString = photosURLString[indexPath.row]
+        cell.imageView.kf_setImageWithURL(NSURL(string: photoUrlString)!, placeholderImage: UIImage(named: "1"))
+        
         
         return cell
     }
@@ -96,21 +106,16 @@ extension LocalController: UICollectionViewDelegate, UICollectionViewDataSource 
         
         func setPhoto() -> [PhotoModel] {
             var photos: [PhotoModel] = []
-            for (index, image) in images.enumerate() {
-//            这个方法只能返回可见的cell, 如果不可见, 返回值为nil
-                let cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TestCell
-                let sourceView = cell?.imageView
-
-                let photoModel = PhotoModel(localImage: image, sourceImageView: sourceView)
+            for photoURLString in photosURLString {
+                // 初始化不设置sourceImageView,也可以设置, 如果sourceImageView是不需要动态改变的, 那么推荐不需要代理设置sourceImageView
+                // 而在代理方法中动态更新,将会覆盖原来设置的sourceImageView
+                let photoModel = PhotoModel(imageUrlString: photoURLString, sourceImageView: nil)
                 photos.append(photoModel)
             }
             return photos
         }
         
-        
         let photoBrowser = PhotoBrowser(photoModels: setPhoto())
-        
         photoBrowser.show(inVc: self, beginPage: indexPath.row)
     }
-    
 }

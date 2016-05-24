@@ -105,14 +105,23 @@ extension NetworkWithoutDelegateController: UICollectionViewDelegate, UICollecti
                 // 这个方法只能返回可见的cell, 如果不可见, 返回值为nil
                 let cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TestCell
                 let sourceView = cell?.imageView
-                let photoModel = PhotoModel(imageUrlString: photoURLString, sourceImageView: sourceView, description: nil)
+                let photoModel = PhotoModel(imageUrlString: photoURLString, sourceImageView: sourceView)
                 photos.append(photoModel)
             }
             return photos
         }
         
-        let photoBrowser = PhotoBrowser(photoModels: setPhoto())
-        photoBrowser.showWithBeginPage(indexPath.row)
+        let photoBrowser = PhotoBrowser(photoModels: setPhoto()) {[weak self] (extraBtn) in
+            if let sSelf = self {
+                let hud = SimpleHUD(frame:CGRect(x: 0.0, y: (sSelf.view.zj_height - 80)*0.5, width: sSelf.view.zj_width, height: 80.0))
+                sSelf.view.addSubview(hud)
+                hud.showHUD("点击了附加的按钮", autoHide: true, afterTime: 2.0)
+            }
+
+        }
+        // 指定代理
+        
+        photoBrowser.show(inVc: self, beginPage: indexPath.row)
     }
     
 }

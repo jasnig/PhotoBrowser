@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qKs-4C-iVV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f4E-91-aJs">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -62,15 +62,33 @@
                                     <segue destination="l1l-aK-rvT" kind="show" id="KQx-Qu-6X0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXB-yb-Kla">
+                                <rect key="frame" x="0.0" y="214" width="600" height="44"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="37e-xy-WM3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="未设置sourceImageView并且代理也没有提供">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fAR-cL-ozi" kind="show" id="oNK-Oz-aUZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Izf-qc-2Wq" firstAttribute="leading" secondItem="edQ-g1-7rn" secondAttribute="leading" id="1tV-XG-ae4"/>
+                            <constraint firstItem="aXB-yb-Kla" firstAttribute="leading" secondItem="Mg6-xx-FNZ" secondAttribute="leading" id="JCu-TR-r8k"/>
                             <constraint firstItem="edQ-g1-7rn" firstAttribute="leading" secondItem="InV-qn-fBg" secondAttribute="leading" id="MoX-Uo-tD1"/>
                             <constraint firstItem="Mg6-xx-FNZ" firstAttribute="top" secondItem="Izf-qc-2Wq" secondAttribute="bottom" constant="1" id="Yfa-QB-Knd"/>
                             <constraint firstItem="Mg6-xx-FNZ" firstAttribute="trailing" secondItem="edQ-g1-7rn" secondAttribute="trailing" id="ZsA-tW-tTU"/>
                             <constraint firstItem="Izf-qc-2Wq" firstAttribute="trailing" secondItem="edQ-g1-7rn" secondAttribute="trailing" id="bcI-r9-Bs1"/>
+                            <constraint firstItem="aXB-yb-Kla" firstAttribute="trailing" secondItem="Mg6-xx-FNZ" secondAttribute="trailing" id="gQd-Ub-lem"/>
                             <constraint firstItem="Izf-qc-2Wq" firstAttribute="top" secondItem="edQ-g1-7rn" secondAttribute="bottom" constant="1" id="hyj-0P-BGe"/>
+                            <constraint firstItem="aXB-yb-Kla" firstAttribute="top" secondItem="Mg6-xx-FNZ" secondAttribute="bottom" constant="1" id="ljJ-MN-mRj"/>
                             <constraint firstItem="Mg6-xx-FNZ" firstAttribute="leading" secondItem="edQ-g1-7rn" secondAttribute="leading" id="vdJ-gV-e9V"/>
                             <constraint firstItem="edQ-g1-7rn" firstAttribute="top" secondItem="WCX-fc-zHm" secondAttribute="bottom" constant="15" id="vge-3E-D3w"/>
                             <constraint firstAttribute="trailing" secondItem="edQ-g1-7rn" secondAttribute="trailing" id="wkH-eW-MpT"/>
@@ -80,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cuo-5g-mPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="-85"/>
+            <point key="canvasLocation" x="1811" y="-240"/>
         </scene>
         <!--本地图片-->
         <scene sceneID="tne-QT-ifu">
@@ -99,12 +117,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="-850"/>
+            <point key="canvasLocation" x="2470" y="-850"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--类型-->
         <scene sceneID="3ep-VR-fkb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qKs-4C-iVV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="类型" id="ZWW-nX-OgD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZxS-Rf-SxF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -117,7 +136,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kV8-5z-lFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="-380"/>
+            <point key="canvasLocation" x="1043" y="-576"/>
         </scene>
         <!--网络图片(使用代理)-->
         <scene sceneID="IY0-Jw-8eT">
@@ -136,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Oo-se-zsO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="497"/>
+            <point key="canvasLocation" x="2564" y="616"/>
         </scene>
         <!--网络图片(未使用代理)-->
         <scene sceneID="rkV-hF-JYA">
@@ -155,7 +174,66 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dz4-S2-w5r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1667" y="-174"/>
+            <point key="canvasLocation" x="2549" y="-94"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hT0-zg-UD0">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="f4E-91-aJs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="jgs-Ke-oGB">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qKs-4C-iVV" kind="relationship" relationship="viewControllers" id="imz-Df-wSw"/>
+                        <segue destination="bMS-p6-lX8" kind="relationship" relationship="viewControllers" id="vaP-X2-cdR"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7J-mj-4Yq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="291" y="-380"/>
+        </scene>
+        <!--测试tabBar-->
+        <scene sceneID="eok-tR-DN9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bMS-p6-lX8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="测试tabBar" id="Ovc-2f-QyM"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VIq-Yb-vHf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="l1l-aK-rvT" kind="relationship" relationship="rootViewController" id="OPL-rG-jQ7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAm-XV-znW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="120"/>
+        </scene>
+        <!--未设置scourceImageView-->
+        <scene sceneID="hGs-ex-bZA">
+            <objects>
+                <viewController id="fAR-cL-ozi" customClass="NoSourceImageViewController" customModule="ImageBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vWt-Hd-YDe"/>
+                        <viewControllerLayoutGuide type="bottom" id="VtA-Pq-WkR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WWr-ed-RG2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="未设置scourceImageView" id="CyA-e1-7zz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1c-GZ-Bpc" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2536" y="1365"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="OPL-rG-jQ7"/>
+    </inferredMetricsTieBreakers>
 </document>

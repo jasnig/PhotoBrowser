@@ -39,16 +39,16 @@ public class PhotoModel {
     // 用来设置默认图片 和执行动画 如果没有提供,将没有加载时的默认图片, 并且没有动画
     public var sourceImageView: UIImageView?
     // 本地图片
-    public init(localImage: UIImage?, sourceImageView: UIImageView?, description: String?) {
+    public init(localImage: UIImage?, sourceImageView: UIImageView?) {
         self.localImage = localImage
         self.sourceImageView = sourceImageView
-        self.description = description
+//        self.description = description
     }
     // 网络图片
-    public init(imageUrlString: String?, sourceImageView: UIImageView?, description: String?) {
+    public init(imageUrlString: String?, sourceImageView: UIImageView?) {
         self.imageUrlString = imageUrlString
         self.sourceImageView = sourceImageView
-        self.description = description
+//        self.description = description
     }
 }
 
@@ -61,7 +61,11 @@ class PhotoViewCell: UICollectionViewCell {
             setupImage()
         }
     }
-    
+    // 是否横屏
+    private var isLandscap: Bool {
+        let screenSize = UIScreen.mainScreen().bounds.size
+        return screenSize.width >= screenSize.height
+    }
     
     private var downloadTask: RetrieveImageTask?
     /// 懒加载 对外可读
@@ -73,7 +77,7 @@ class PhotoViewCell: UICollectionViewCell {
         return imageView
     }()
     /// 懒加载
-    lazy var scrollView: UIScrollView = {
+    private(set) lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: self.contentView.zj_width - PhotoBrowser.contentMargin, height: self.contentView.zj_height))
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = true
@@ -139,7 +143,7 @@ class PhotoViewCell: UICollectionViewCell {
     
     private func setupScrollView() {
         scrollView.addSubview(imageView)
-        addSubview(scrollView)
+        contentView.addSubview(scrollView)
     }
     
     //MARK:- 点击处理
@@ -173,6 +177,13 @@ class PhotoViewCell: UICollectionViewCell {
             
         }
         
+    }
+    
+    // 处理屏幕旋转
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView.frame = CGRect(x: 0.0, y: 0.0, width: self.contentView.zj_width - PhotoBrowser.contentMargin, height: self.contentView.zj_height)
+        setupImageViewFrame()
     }
     
     ///  重置UI状态
@@ -256,17 +267,28 @@ extension PhotoViewCell {
     }
     
     private func setupImageViewFrame() {
+        // 考虑长图, 考虑旋转屏幕
         if let imageV = image {
+            
             // 设置为最小倍数
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
-            
             imageView.image = image
+
             // 按照图片比例设置imageView的frame
             let width = imageV.size.width < scrollView.zj_width ? imageV.size.width : scrollView.zj_width
             let height = imageV.size.height * (width / imageV.size.width)
             
-            // 居中显示
-            imageView.frame = CGRect(x: (scrollView.zj_width - width) / 2, y: (scrollView.zj_height - height) / 2, width: width, height: height)
+            // 长图
+            if height > scrollView.zj_height {
+                imageView.frame = CGRect(x: (scrollView.zj_width - width) / 2, y: 0.0, width: width, height: height)
+                scrollView.contentSize = imageView.bounds.size
+                scrollView.contentOffset = CGPointZero
+//                scrollView.zoomToRect(CGRect(x: scrollView.zj_centerX, y: scrollView.zj_centerY, width: scrollView.zj_width/2, height: scrollView.zj_height/2), animated: false)
+            } else {
+                // 居中显示
+                imageView.frame = CGRect(x: (scrollView.zj_width - width) / 2, y: (scrollView.zj_height - height) / 2, width: width, height: height)
+                
+            }
             // 使得最大缩放时(双击或者放大)图片高度 = 屏幕高度 + 1.0倍图片高度
             scrollView.maximumZoomScale = scrollView.zj_height / height + 1.0
         }

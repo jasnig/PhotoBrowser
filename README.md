@@ -7,7 +7,7 @@
 ##使用示例效果
 
 ![网络图片.gif](http://upload-images.jianshu.io/upload_images/1271831-a188a56a9ac4e4be.gif?imageMogr2/auto-orient/strip)
-![本地图片.gif](http://upload-images.jianshu.io/upload_images/1271831-618be1d264e6c188.gif?imageMogr2/auto-orient/strip)
+![最终效果.gif](http://upload-images.jianshu.io/upload_images/1271831-f9a69daadeef8e08.gif?imageMogr2/auto-orient/strip)
 
 
 -----
@@ -17,6 +17,10 @@
 ### attention please PhotoBrowser relys on 'Kingfisher'
 
 ---
+
+## Feature
+* providing an easy way to reach the effect that looking through photos likes the system photo app
+* support rotation
 
 ### 书写思路移步
 ###[简书1](http://www.jianshu.com/p/331c24bd263e)
@@ -38,7 +42,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'ZJPhotoBrowser', '~> 0.0.6'
+pod 'ZJPhotoBrowser', '~> 0.0.7'
 
 * 直接下载将下载文件的PhotoBrowser文件夹下的文件拖进您的项目中就可以使用了
 *  or drag the downloaded file 'PhotoBrowser' to your project

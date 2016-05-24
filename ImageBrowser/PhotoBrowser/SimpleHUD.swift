@@ -107,7 +107,7 @@ class SimpleHUD: UIView {
         
         label.font = UIFont.boldSystemFontOfSize(16.0)
         label.backgroundColor = UIColor.blackColor()
-        label.layer.cornerRadius = 15.0
+        label.layer.cornerRadius = label.bounds.size.height / 2
         label.layer.masksToBounds = true
         
         label.textColor = UIColor.whiteColor()
@@ -141,7 +141,7 @@ class SimpleHUD: UIView {
         
     }
     
-    ///  <#Description#>
+    ///
     ///
     ///  - parameter autoHide: 是否自动隐藏
     ///  - parameter time:     自动隐藏的时间 只有当autoHide = true的时候有效
@@ -150,11 +150,18 @@ class SimpleHUD: UIView {
         loadingView.removeFromSuperview()
         addSubview(messageLabel)
         messageLabel.text = text
+        
+        let textSize = (text as NSString).boundingRectWithSize(CGSizeMake(CGFloat(MAXFLOAT), 0.0), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: messageLabel.font], context: nil)
+        messageLabel.frame = CGRect(x: (self.bounds.width - textSize.width - 16)*0.5, y: (self.bounds.height - 40.0)*0.5, width: textSize.width + 16, height: 40.0)
+        
+        messageLabel.layer.cornerRadius = messageLabel.bounds.height / 2
+
+        
         if autoHide {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {[unowned self] in
                 self.hideHUD()
                 
-                })
+            })
         }
         
     }

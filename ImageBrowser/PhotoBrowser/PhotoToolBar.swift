@@ -29,7 +29,9 @@
 
 import UIKit
 
-
+///  ///  @author ZeroJ, 16-05-24 23:05:11
+///
+//TODO: 还未使用 (it is not useful now)
 struct ToolBarStyle {
     enum ToolBarPosition {
         case Up
@@ -41,8 +43,6 @@ struct ToolBarStyle {
     var showExtraBtn = true
     /// toolBar位置
     var toolbarPosition = ToolBarPosition.Down
-    
-    
     
 }
 
@@ -119,20 +119,34 @@ class PhotoToolBar: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let saveBtnX: CGFloat = 30.0
-        let saveBtnW: CGFloat = 60.0
-        let toolBarH: CGFloat = bounds.size.height
+        let margin: CGFloat = 30.0
+        let btnW: CGFloat = 60.0
+        
+        let saveBtnX = NSLayoutConstraint(item: saveBtn, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1.0, constant: margin)
+        let saveBtnY = NSLayoutConstraint(item: saveBtn, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let saveBtnW = NSLayoutConstraint(item: saveBtn, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: btnW)
+        let saveBtnH = NSLayoutConstraint(item: saveBtn, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 1.0, constant: 0.0)
+        
+        saveBtn.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints([saveBtnX, saveBtnY, saveBtnW, saveBtnH])
+        
+        let extraBtnX = NSLayoutConstraint(item: extraBtn, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1.0, constant: -margin)
+        let extraBtnY = NSLayoutConstraint(item: extraBtn, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let extraBtnW = NSLayoutConstraint(item: extraBtn, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: btnW)
+        let extraBtnH = NSLayoutConstraint(item: extraBtn, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 1.0, constant: 0.0)
+        
+        extraBtn.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints([extraBtnX, extraBtnY, extraBtnW, extraBtnH])
+        
+        
+        let indexLabelLeft = NSLayoutConstraint(item: indexLabel, attribute: .Leading, relatedBy: .Equal, toItem: saveBtn, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let indexLabelY = NSLayoutConstraint(item: indexLabel, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let indexLabelRight = NSLayoutConstraint(item: indexLabel, attribute: .Trailing, relatedBy: .Equal, toItem: extraBtn, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let indexLabelH = NSLayoutConstraint(item: indexLabel, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 1.0, constant: 0.0)
+        
+        indexLabel.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints([indexLabelLeft, indexLabelY, indexLabelRight, indexLabelH])
 
-        saveBtn.frame = CGRect(x: saveBtnX, y: 0.0, width: saveBtnW, height: toolBarH)
-        
-        let extraBtnW: CGFloat = saveBtnW
-        let extraBtnX: CGFloat = bounds.size.width - saveBtnX - saveBtnW
-        extraBtn.frame = CGRect(x: extraBtnX, y: 0.0, width: extraBtnW, height: toolBarH)
-        
-        let indexLabelX: CGFloat = CGRectGetMaxX(saveBtn.frame)
-        let indexLabelW = extraBtnX - indexLabelX
-        
-        indexLabel.frame = CGRect(x: indexLabelX, y: 0.0, width: indexLabelW, height: toolBarH)
         
     }
 

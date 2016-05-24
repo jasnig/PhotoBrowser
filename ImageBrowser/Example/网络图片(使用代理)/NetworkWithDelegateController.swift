@@ -52,6 +52,7 @@ class NetworkWithDelegateController: UIViewController {
         return collectionView
     }()
     let photosURLString: [String] = [
+        "http://a.33iq.com/upload/15/08/12/images/14393706299128.jpg",
         "http://pic1a.nipic.com/2008-09-19/200891903253318_2.jpg",
         "http://online.sccnn.com/desk2/1314/1920car_35003.jpg",
         "http://img1qn.moko.cc/2016-04-21/a37f9d54-493f-4352-8b40-f17cb8570e67.jpg",
@@ -108,7 +109,7 @@ extension NetworkWithDelegateController: UICollectionViewDelegate, UICollectionV
             for photoURLString in photosURLString {
                 // 初始化不设置sourceImageView,也可以设置, 如果sourceImageView是不需要动态改变的, 那么推荐不需要代理设置sourceImageView
                 // 而在代理方法中动态更新,将会覆盖原来设置的sourceImageView
-                let photoModel = PhotoModel(imageUrlString: photoURLString, sourceImageView: nil, description: nil)
+                let photoModel = PhotoModel(imageUrlString: photoURLString, sourceImageView: nil)
                 photos.append(photoModel)
             }
             return photos
@@ -117,7 +118,7 @@ extension NetworkWithDelegateController: UICollectionViewDelegate, UICollectionV
         let photoBrowser = PhotoBrowser(photoModels: setPhoto())
         // 指定代理
         photoBrowser.delegate = self
-        photoBrowser.showWithBeginPage(indexPath.row)
+        photoBrowser.show(inVc: self, beginPage: indexPath.row)
     }
 }
 
@@ -154,6 +155,7 @@ extension NetworkWithDelegateController: PhotoBrowserDelegate {
         let currentIndexPath = NSIndexPath(forRow: currentPage, inSection: 0)
         if !visibleIndexPaths.contains(currentIndexPath) {
             collectionView.scrollToItemAtIndexPath(currentIndexPath, atScrollPosition: .Top, animated: false)
+            collectionView.layoutIfNeeded()
         }
     }
     // 获取动态改变的sourceImageView
