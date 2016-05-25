@@ -72,7 +72,7 @@ class PhotoViewCell: UICollectionViewCell {
     private(set) lazy var imageView: AnimatedImageView = {[unowned self] in
         let imageView = AnimatedImageView()
         imageView.contentMode = .ScaleAspectFit
-        
+        imageView.userInteractionEnabled = true
         imageView.backgroundColor = UIColor.blackColor()
         return imageView
     }()
@@ -81,6 +81,7 @@ class PhotoViewCell: UICollectionViewCell {
         let scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: self.contentView.zj_width - PhotoBrowser.contentMargin, height: self.contentView.zj_height))
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = true
+        scrollView.clipsToBounds = true
         //        pagingEnabled = false
         // 预设定
         scrollView.maximumZoomScale = 2.0
@@ -255,7 +256,10 @@ extension PhotoViewCell {
                 strongSelf.image = image
                 strongSelf.hud?.hideLoadingView()
                 
-                if let _ = image { return }
+                if let _ = image {//加载成功
+                    strongSelf.hud?.hideHUD()
+                    return
+                }
                 
                 // 提示加载错误
                 strongSelf.hud?.showHUD("加载失败", autoHide: false, afterTime: 0.0)

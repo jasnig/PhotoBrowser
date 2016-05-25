@@ -42,7 +42,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'ZJPhotoBrowser', '~> 0.0.8'
+pod 'ZJPhotoBrowser', '~> 0.1.0'
 
 * 直接下载将下载文件的PhotoBrowser文件夹下的文件拖进您的项目中就可以使用了
 *  or drag the downloaded file 'PhotoBrowser' to your project

@@ -157,8 +157,7 @@ public class PhotoBrowser: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blackColor()
-
-
+        automaticallyAdjustsScrollViewInsets = false
 
     }
     
@@ -540,7 +539,7 @@ extension PhotoBrowser: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if isOritenting { return }
         // 向下取整
         currentIndex = Int(scrollView.contentOffset.x / scrollView.zj_width + 0.5)
-        //        print(currentIndex)
+//                print(currentIndex)
     }
     
 }
