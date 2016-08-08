@@ -4,25 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ImageBrowser.xcscheme</key>
+		<key>Kingfisher.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ImageBrowser.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4BB7D8491CD8A1C20003A082</key>
+		<key>E96E13C4D3B5B5FC0651440734C2BF4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4BB7D85D1CD8A1C30003A082</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4BB7D8681CD8A1C30003A082</key>
+		<key>FEE48F66B0213627698074E57F2EE697</key>
 		<dict>
 			<key>primary</key>
 			<true/>

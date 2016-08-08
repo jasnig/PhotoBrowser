@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "ZJPhotoBrowser"
-  s.version     = "0.0.8"
+  s.version     = "0.1.0"
   s.summary     = "PhotoBrowser provides an easy way to reach the effect that looking through photos likes the system photo app and also supports rotation"
   s.homepage    = "https://github.com/jasnig/PhotoBrowser"
   s.license     = { :type => "MIT" }
