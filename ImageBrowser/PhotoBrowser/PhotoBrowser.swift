@@ -217,12 +217,13 @@ extension PhotoBrowser {
     public func show(inVc parentVc: UIViewController, beginPage: Int) {
         currentIndex = beginPage
         self.parentVc = parentVc
-        self.view.frame = UIScreen.mainScreen().bounds
-        self.parentVc.view.addSubview(self.view)
-        self.parentVc.addChildViewController(self)
-        self.didMoveToParentViewController(self.parentVc)
-        navigationController?.navigationBarHidden = true
-        tabBarController?.tabBar.hidden = true
+        parentVc.presentViewController(self, animated: false, completion: nil)
+//        self.view.frame = UIScreen.mainScreen().bounds
+//        self.parentVc.view.addSubview(self.view)
+//        self.parentVc.addChildViewController(self)
+//        self.didMoveToParentViewController(self.parentVc)
+//        parentVc.navigationController?.navigationBarHidden = true
+//        parentVc.tabBarController?.tabBar.hidden = true
         
     }
     
@@ -423,8 +424,8 @@ extension PhotoBrowser {
     }
     
     private func animateZoomOut() {
-        navigationController?.navigationBarHidden = false
-        tabBarController?.tabBar.hidden = false
+//        parentVc.navigationController?.navigationBarHidden = false
+//        parentVc.tabBarController?.tabBar.hidden = false
 
         let sourceView = getCurrentSourceImageView(currentIndex)
         
@@ -460,10 +461,11 @@ extension PhotoBrowser {
                 // 退出浏览模式
                 self.delegate?.photoBrowserDidEndDisplay(self.currentIndex)
                 currentImageSnap.removeFromSuperview()
-                
-                self.willMoveToParentViewController(nil)
-                self.view.removeFromSuperview()
-                self.removeFromParentViewController()
+                self.dismissViewControllerAnimated(false, completion: nil)
+
+//                self.willMoveToParentViewController(nil)
+//                self.view.removeFromSuperview()
+//                self.removeFromParentViewController()
             }
 
         } else {
@@ -475,10 +477,11 @@ extension PhotoBrowser {
             }) {[unowned self] (_) in
                 // 退出浏览模式
                 self.delegate?.photoBrowserDidEndDisplay(self.currentIndex)
-                
-                self.willMoveToParentViewController(nil)
-                self.view.removeFromSuperview()
-                self.removeFromParentViewController()
+                self.dismissViewControllerAnimated(false, completion: nil)
+         
+//                self.willMoveToParentViewController(nil)
+//                self.view.removeFromSuperview()
+//                self.removeFromParentViewController()
             }
         }
     }
