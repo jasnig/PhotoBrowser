@@ -251,19 +251,20 @@ extension PhotoViewCell {
             //            withExtendedLifetime(self, { () -> self in
             //
             //            })
-            if let strongSelf = self  {
-                
-                strongSelf.image = image
-                strongSelf.hud?.hideLoadingView()
-                
-                if let _ = image {//加载成功
-                    strongSelf.hud?.hideHUD()
-                    return
-                }
-                
-                // 提示加载错误
-                strongSelf.hud?.showHUD("加载失败", autoHide: false, afterTime: 0.0)
+            let strongSelf = self
+            guard let `self` = strongSelf else { return }
+
+            
+            self.image = image
+            self.hud?.hideLoadingView()
+            
+            if let _ = image {//加载成功
+                self.hud?.hideHUD()
+                return
             }
+            
+            // 提示加载错误
+            self.hud?.showHUD("加载失败", autoHide: false, afterTime: 0.0)
             
             
         }

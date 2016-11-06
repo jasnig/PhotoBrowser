@@ -218,13 +218,6 @@ extension PhotoBrowser {
         currentIndex = beginPage
         self.parentVc = parentVc
         parentVc.presentViewController(self, animated: false, completion: nil)
-//        self.view.frame = UIScreen.mainScreen().bounds
-//        self.parentVc.view.addSubview(self.view)
-//        self.parentVc.addChildViewController(self)
-//        self.didMoveToParentViewController(self.parentVc)
-//        parentVc.navigationController?.navigationBarHidden = true
-//        parentVc.tabBarController?.tabBar.hidden = true
-        
     }
     
     ///  用于设置当前的页
@@ -534,7 +527,6 @@ extension PhotoBrowser: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        //        let size = UIScreen.mainScreen().bounds.size
         return collectionView.bounds.size
     }
     
